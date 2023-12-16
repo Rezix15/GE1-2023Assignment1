@@ -1,8 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=11 format=3 uid="uid://cbrr130fydhu"]
+
+[ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
+[ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
+[ext_resource type="PackedScene" uid="uid://bckjw5wgi2qrf" path="res://Models/ButterLid.glb" id="3_1xx6e"]
+[ext_resource type="PackedScene" uid="uid://s5vv8v2qryfh" path="res://Models/ButterKnife.glb" id="4_y5i5f"]
+[ext_resource type="PackedScene" uid="uid://cjjap1t48i40d" path="res://Models/Fruit_Bowl.glb" id="5_gwdod"]
+[ext_resource type="PackedScene" uid="uid://chfsbxhvxvmvs" path="res://Models/MixingBowl.glb" id="6_h3br6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdj58"]
+albedo_color = Color(1, 0.694118, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_63qn5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nn4qn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6n55"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -10,9 +22,36 @@
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_cdj58")
 mesh = SubResource("BoxMesh_63qn5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Table/MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_nn4qn")
+
+[node name="ButterTray" parent="." instance=ExtResource("1_n36hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58935, 0.647649, 3.46051)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ButterTray"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButterTray/StaticBody3D"]
+shape = SubResource("BoxShape3D_m6n55")
+
+[node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
+
+[node name="ButterLid" parent="." instance=ExtResource("3_1xx6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29295, 0.5, 3.41538)
+
+[node name="ButterKnife" parent="." instance=ExtResource("4_y5i5f")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.97588, 1.11093, 3.55057)
+
+[node name="Fruit_Bowl" parent="." instance=ExtResource("5_gwdod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -0.820237)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73875, 11.3425)
+
+[node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.121, 0.5, 4.088)

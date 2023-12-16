@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://r8j0c64murhl"
-path="res://.godot/imported/ButterLid.glb-0fbbe731136c1e7165c58407ec2da7b3.scn"
+uid="uid://s5vv8v2qryfh"
+path="res://.godot/imported/ButterKnife.glb-bfe2d6fcd64380e73e268da845cd2554.scn"
 
 [deps]
 
-source_file="res://ButterLid.glb"
-dest_files=["res://.godot/imported/ButterLid.glb-0fbbe731136c1e7165c58407ec2da7b3.scn"]
+source_file="res://Models/ButterKnife.glb"
+dest_files=["res://.godot/imported/ButterKnife.glb-bfe2d6fcd64380e73e268da845cd2554.scn"]
 
 [params]
 
