@@ -42,10 +42,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58935, 0.647649, 3.46051)
 shape = SubResource("BoxShape3D_m6n55")
 
 [node name="Flour" parent="." instance=ExtResource("2_ba0le")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.98233, 4.69164, 1.81068)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.98233, 0.548874, 4.01763)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Flour"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0562992, 0.191511, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0562992, 0.234484, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Flour/RigidBody3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -61,10 +61,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29295, 0.5, 3.41538)
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.97588, 1.11093, 3.55057)
 
 [node name="Fruit_Bowl" parent="." instance=ExtResource("5_gwdod")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -0.820237)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -3.1009)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73875, 11.3425)
 
 [node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.121, 0.5, 4.088)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.121, 0.5, 3.26143)
