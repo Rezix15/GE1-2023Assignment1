@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=13 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
+[ext_resource type="PackedScene" uid="uid://cfpwcdn41ag3u" path="res://Models/Flour.glb" id="2_ba0le"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
 [ext_resource type="PackedScene" uid="uid://bckjw5wgi2qrf" path="res://Models/ButterLid.glb" id="3_1xx6e"]
 [ext_resource type="PackedScene" uid="uid://s5vv8v2qryfh" path="res://Models/ButterKnife.glb" id="4_y5i5f"]
@@ -15,6 +16,8 @@ albedo_color = Color(1, 0.694118, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nn4qn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m6n55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lft3"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -37,6 +40,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58935, 0.647649, 3.46051)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ButterTray/StaticBody3D"]
 shape = SubResource("BoxShape3D_m6n55")
+
+[node name="Flour" parent="." instance=ExtResource("2_ba0le")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.98233, 4.69164, 1.81068)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Flour"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0562992, 0.191511, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flour/RigidBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_5lft3")
 
 [node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
