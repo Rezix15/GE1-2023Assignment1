@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=16 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://cfpwcdn41ag3u" path="res://Models/Flour.glb" id="2_ba0le"]
@@ -19,6 +19,9 @@ albedo_color = Color(1, 0.694118, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m6n55"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5lft3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x32q1"]
+size = Vector3(1, 0.575171, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sc6f"]
 size = Vector3(0.0311493, 0.018232, 0.112096)
@@ -58,6 +61,11 @@ shape = SubResource("BoxShape3D_5lft3")
 
 [node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
+
+[node name="Area3D" type="Area3D" parent="Butter"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Butter/Area3D"]
+shape = SubResource("BoxShape3D_x32q1")
 
 [node name="ButterLid" parent="." instance=ExtResource("3_1xx6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29295, 0.5, 3.41538)
