@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=28 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://cfpwcdn41ag3u" path="res://Models/Flour.glb" id="2_ba0le"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bath82runbwa6" path="res://Models/CircularTray.glb" id="9_kcdxp"]
 [ext_resource type="PackedScene" uid="uid://rno80vmxw1da" path="res://Models/Egg.glb" id="10_avmu0"]
 [ext_resource type="Script" path="res://Scripts/Egg.gd" id="11_308u0"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="11_tb1lu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mb1vs"]
 
@@ -39,7 +40,7 @@ size = Vector3(2.17198, 0.481627, 1.45625)
 size = Vector3(0.0311493, 0.018232, 0.112096)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn583"]
-size = Vector3(1.60188, 0.228949, 2.13408)
+size = Vector3(2.71441, 1.33156, 2.13408)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0cbjb"]
 size = Vector3(1.92001, 0.129783, 1.936)
@@ -127,6 +128,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73875, 11.3425)
 [node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.121, 0.5, 3.26143)
 script = ExtResource("9_3lpq5")
+
+[node name="Spawner" type="Node3D" parent="MixingBowl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00775, 0)
+script = ExtResource("11_tb1lu")
 
 [node name="Area3D" type="Area3D" parent="MixingBowl"]
 

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://kioymtqbr76a"]
-
-[ext_resource type="PackedScene" uid="uid://5ikna51iju8f" path="res://Models/EmitObjects/BaseFlour.glb" id="1_li5tj"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="BaseFlour" parent="." instance=ExtResource("1_li5tj")]

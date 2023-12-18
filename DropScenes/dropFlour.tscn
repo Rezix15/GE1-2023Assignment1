@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://kioymtqbr76a"]
+
+[ext_resource type="PackedScene" uid="uid://5ikna51iju8f" path="res://Models/EmitObjects/BaseFlour.glb" id="1_36vs5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fuhm"]
+size = Vector3(3.24637, 1.20414, 4.00311)
+
+[node name="Root" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05233, 0)
+shape = SubResource("BoxShape3D_3fuhm")
+
+[node name="BaseFlour" parent="RigidBody3D" instance=ExtResource("1_36vs5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
