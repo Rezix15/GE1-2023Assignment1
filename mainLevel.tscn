@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=27 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://cfpwcdn41ag3u" path="res://Models/Flour.glb" id="2_ba0le"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bckjw5wgi2qrf" path="res://Models/ButterLid.glb" id="3_1xx6e"]
 [ext_resource type="Script" path="res://Scripts/Flour.gd" id="3_elvcu"]
 [ext_resource type="PackedScene" uid="uid://s5vv8v2qryfh" path="res://Models/ButterKnife.glb" id="4_y5i5f"]
+[ext_resource type="Script" path="res://Scripts/Butter.gd" id="5_7lxe2"]
 [ext_resource type="PackedScene" uid="uid://cjjap1t48i40d" path="res://Models/Fruit_Bowl.glb" id="5_gwdod"]
 [ext_resource type="PackedScene" uid="uid://chfsbxhvxvmvs" path="res://Models/MixingBowl.glb" id="6_h3br6"]
 [ext_resource type="Script" path="res://Scripts/MixingBowl.gd" id="9_3lpq5"]
@@ -92,6 +93,7 @@ shape = SubResource("BoxShape3D_5lft3")
 
 [node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
+script = ExtResource("5_7lxe2")
 
 [node name="Area3D" type="Area3D" parent="Butter"]
 
@@ -160,7 +162,11 @@ script = ExtResource("11_308u0")
 shape = SubResource("BoxShape3D_yylak")
 
 [connection signal="input_event" from="Flour/Area3D" to="Flour" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Flour/Area3D" to="Flour" method="_on_area_3d_mouse_entered"]
+[connection signal="input_event" from="Butter/Area3D" to="Butter" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Butter/Area3D" to="Butter" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_input_event"]
 [connection signal="input_event" from="Egg/Area3D" to="Egg" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Egg/Area3D" to="Egg" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_mouse_entered"]
