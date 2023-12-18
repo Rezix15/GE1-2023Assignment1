@@ -60,9 +60,11 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("BoxShape3D_5lft3")
 
 [node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 3.64963, 3.48703)
 
 [node name="Area3D" type="Area3D" parent="Butter"]
+gravity_space_override = 1
+gravity_point = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Butter/Area3D"]
 shape = SubResource("BoxShape3D_x32q1")
