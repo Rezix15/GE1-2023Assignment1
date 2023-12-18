@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=26 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://cfpwcdn41ag3u" path="res://Models/Flour.glb" id="2_ba0le"]
@@ -8,6 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://s5vv8v2qryfh" path="res://Models/ButterKnife.glb" id="4_y5i5f"]
 [ext_resource type="PackedScene" uid="uid://cjjap1t48i40d" path="res://Models/Fruit_Bowl.glb" id="5_gwdod"]
 [ext_resource type="PackedScene" uid="uid://chfsbxhvxvmvs" path="res://Models/MixingBowl.glb" id="6_h3br6"]
+[ext_resource type="Script" path="res://Scripts/MixingBowl.gd" id="9_3lpq5"]
+[ext_resource type="PackedScene" uid="uid://bath82runbwa6" path="res://Models/CircularTray.glb" id="9_kcdxp"]
+[ext_resource type="PackedScene" uid="uid://rno80vmxw1da" path="res://Models/Egg.glb" id="10_avmu0"]
+[ext_resource type="Script" path="res://Scripts/Egg.gd" id="11_308u0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mb1vs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5acp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdj58"]
 albedo_color = Color(1, 0.694118, 1, 1)
@@ -23,10 +31,33 @@ albedo_color = Color(1, 0.694118, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x32q1"]
 size = Vector3(1, 0.575171, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqlpk"]
+size = Vector3(2.17198, 0.481627, 1.45625)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sc6f"]
 size = Vector3(0.0311493, 0.018232, 0.112096)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kn583"]
+size = Vector3(2.49683, 1, 2.51617)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cbjb"]
+size = Vector3(1.92001, 0.129783, 1.936)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yylak"]
+size = Vector3(0.489884, 0.769955, 0.770567)
+
 [node name="Root" type="Node3D"]
+
+[node name="Wall" type="Node3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 10, 0, 0, 0, 1, 0, 4.5, -8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("BoxMesh_mb1vs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_v5acp")
 
 [node name="Table" type="Node3D" parent="."]
 
@@ -49,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58935, 0.647649, 3.46051)
 shape = SubResource("BoxShape3D_m6n55")
 
 [node name="Flour" parent="." instance=ExtResource("2_ba0le")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.98233, 0.548874, 4.01763)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.05536, 0.548874, 4.01763)
 script = ExtResource("3_elvcu")
 
 [node name="Area3D" type="Area3D" parent="Flour"]
@@ -60,17 +91,21 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("BoxShape3D_5lft3")
 
 [node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 3.64963, 3.48703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
 
 [node name="Area3D" type="Area3D" parent="Butter"]
-gravity_space_override = 1
-gravity_point = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Butter/Area3D"]
 shape = SubResource("BoxShape3D_x32q1")
 
 [node name="ButterLid" parent="." instance=ExtResource("3_1xx6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29295, 0.5, 3.41538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49069, 1.36371, 1.98619)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="ButterLid"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButterLid/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300999, 0)
+shape = SubResource("BoxShape3D_hqlpk")
 
 [node name="ButterKnife" parent="." instance=ExtResource("4_y5i5f")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.97588, 1.129, 3.55057)
@@ -89,5 +124,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73875, 11.3425)
 
 [node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.121, 0.5, 3.26143)
+script = ExtResource("9_3lpq5")
+
+[node name="Area3D" type="Area3D" parent="MixingBowl"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MixingBowl/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56802, 0)
+shape = SubResource("BoxShape3D_kn583")
+
+[node name="CircularTray" parent="." instance=ExtResource("9_kcdxp")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.87739, 0.625408, 4.10778)
+
+[node name="Area3D" type="Area3D" parent="CircularTray"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CircularTray/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0449176, 0)
+shape = SubResource("BoxShape3D_0cbjb")
+
+[node name="Egg" parent="." instance=ExtResource("10_avmu0")]
+transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -4.45278, 0.701511, 3.60848)
+script = ExtResource("11_308u0")
+
+[node name="Area3D" type="Area3D" parent="Egg"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Egg/Area3D"]
+shape = SubResource("BoxShape3D_yylak")
+
+[node name="Egg2" parent="." instance=ExtResource("10_avmu0")]
+transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -5.19811, 0.701511, 4.72236)
+script = ExtResource("11_308u0")
+
+[node name="Area3D" type="Area3D" parent="Egg2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Egg2/Area3D"]
+shape = SubResource("BoxShape3D_yylak")
 
 [connection signal="input_event" from="Flour/Area3D" to="Flour" method="_on_area_3d_input_event"]
+[connection signal="input_event" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_input_event"]
+[connection signal="input_event" from="Egg/Area3D" to="Egg" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Egg/Area3D" to="Egg" method="_on_area_3d_mouse_entered"]
+[connection signal="input_event" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_input_event"]
