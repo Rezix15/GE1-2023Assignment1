@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=15 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://cfpwcdn41ag3u" path="res://Models/Flour.glb" id="2_ba0le"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
 [ext_resource type="PackedScene" uid="uid://bckjw5wgi2qrf" path="res://Models/ButterLid.glb" id="3_1xx6e"]
+[ext_resource type="Script" path="res://Scripts/Flour.gd" id="3_elvcu"]
 [ext_resource type="PackedScene" uid="uid://s5vv8v2qryfh" path="res://Models/ButterKnife.glb" id="4_y5i5f"]
 [ext_resource type="PackedScene" uid="uid://cjjap1t48i40d" path="res://Models/Fruit_Bowl.glb" id="5_gwdod"]
 [ext_resource type="PackedScene" uid="uid://chfsbxhvxvmvs" path="res://Models/MixingBowl.glb" id="6_h3br6"]
@@ -19,7 +20,10 @@ albedo_color = Color(1, 0.694118, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5lft3"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4sc6f"]
+size = Vector3(0.0311493, 0.018232, 0.112096)
+
+[node name="Root" type="Node3D"]
 
 [node name="Table" type="Node3D" parent="."]
 
@@ -43,11 +47,12 @@ shape = SubResource("BoxShape3D_m6n55")
 
 [node name="Flour" parent="." instance=ExtResource("2_ba0le")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.98233, 0.548874, 4.01763)
+script = ExtResource("3_elvcu")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Flour"]
+[node name="Area3D" type="Area3D" parent="Flour"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0562992, 0.234484, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Flour/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flour/Area3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("BoxShape3D_5lft3")
 
@@ -58,7 +63,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29295, 0.5, 3.41538)
 
 [node name="ButterKnife" parent="." instance=ExtResource("4_y5i5f")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.97588, 1.11093, 3.55057)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.97588, 1.129, 3.55057)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="ButterKnife"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButterKnife/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00739601, 0)
+shape = SubResource("BoxShape3D_4sc6f")
 
 [node name="Fruit_Bowl" parent="." instance=ExtResource("5_gwdod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -3.1009)
@@ -68,3 +79,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73875, 11.3425)
 
 [node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.121, 0.5, 3.26143)
+
+[connection signal="input_event" from="Flour/Area3D" to="Flour" method="_on_area_3d_input_event"]
