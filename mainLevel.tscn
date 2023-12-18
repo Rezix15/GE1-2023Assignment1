@@ -39,7 +39,7 @@ size = Vector3(2.17198, 0.481627, 1.45625)
 size = Vector3(0.0311493, 0.018232, 0.112096)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn583"]
-size = Vector3(2.49683, 1, 2.51617)
+size = Vector3(1.60188, 0.228949, 2.13408)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0cbjb"]
 size = Vector3(1.92001, 0.129783, 1.936)
@@ -131,7 +131,7 @@ script = ExtResource("9_3lpq5")
 [node name="Area3D" type="Area3D" parent="MixingBowl"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MixingBowl/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56802, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242663, 0)
 shape = SubResource("BoxShape3D_kn583")
 
 [node name="CircularTray" parent="." instance=ExtResource("9_kcdxp")]
