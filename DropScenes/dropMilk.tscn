@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0prolsdglt5"]
+
+[ext_resource type="PackedScene" uid="uid://cl5a3viwey17v" path="res://Models/Milk.glb" id="1_qxaa4"]
+
+[node name="Root" type="Node3D"]
+
+[node name="Milk" parent="." instance=ExtResource("1_qxaa4")]
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 0, 11, 0)
+
+[node name="Timer" type="Timer" parent="Milk"]

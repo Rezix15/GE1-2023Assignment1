@@ -1,5 +1,7 @@
 extends Node3D
+
 var itemCount:int = 1
+signal milkClicked(isSelected)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

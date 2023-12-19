@@ -15,6 +15,11 @@ func _spawnEgg():
 	var item = load("res://DropScenes/dropEgg.tscn")
 	var flourSpawn = item.instantiate()
 	add_child(flourSpawn)
+	
+func _spawnMilk():
+	var item = load("res://DropScenes/dropMilk.tscn")
+	var flourSpawn = item.instantiate()
+	add_child(flourSpawn)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
