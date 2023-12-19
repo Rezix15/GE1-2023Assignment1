@@ -42,7 +42,7 @@ size = Vector3(1, 0.575171, 1)
 size = Vector3(2.17198, 0.481627, 1.45625)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sc6f"]
-size = Vector3(0.0311493, 0.018232, 0.112096)
+size = Vector3(0.0913402, 0.018232, 0.203203)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn583"]
 size = Vector3(2.71441, 1.33156, 2.13408)
@@ -99,7 +99,7 @@ mesh = SubResource("BoxMesh_63qn5")
 shape = SubResource("BoxShape3D_nn4qn")
 
 [node name="ButterTray" parent="." instance=ExtResource("1_n36hg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.58935, 0.647649, 3.46051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.648, 3.461)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ButterTray"]
 
@@ -125,7 +125,7 @@ transform = Transform3D(0.24, 6.82121e-16, 0, -6.82121e-16, 0.24, 0, 0, 0, 0.24,
 script = ExtResource("5_3lksj")
 
 [node name="Butter" parent="." instance=ExtResource("2_gmn3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.587098, 3.48703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98593, 0.758623, 3.48703)
 script = ExtResource("5_7lxe2")
 
 [node name="Area3D" type="Area3D" parent="Butter"]
@@ -133,21 +133,28 @@ script = ExtResource("5_7lxe2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Butter/Area3D"]
 shape = SubResource("BoxShape3D_x32q1")
 
-[node name="ButterLid" parent="." instance=ExtResource("3_1xx6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49069, 1.36371, 1.98619)
+[node name="Lid" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.65634, 3.461)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="ButterLid"]
+[node name="RigidBody3D" type="RigidBody3D" parent="Lid"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ButterLid/RigidBody3D"]
+[node name="ButterLid" parent="Lid/RigidBody3D" instance=ExtResource("3_1xx6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00808179, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lid/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300999, 0)
 shape = SubResource("BoxShape3D_hqlpk")
 
-[node name="ButterKnife" parent="." instance=ExtResource("4_y5i5f")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 4.97588, 1.129, 3.55057)
+[node name="ToolKnife" type="Node3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 7.14422, 2.97293, 2.68863)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="ButterKnife"]
+[node name="RigidBody3D" type="RigidBody3D" parent="ToolKnife"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ButterKnife/RigidBody3D"]
+[node name="ButterKnife" parent="ToolKnife/RigidBody3D" instance=ExtResource("4_y5i5f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ToolKnife/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00739601, 0)
 shape = SubResource("BoxShape3D_4sc6f")
 
