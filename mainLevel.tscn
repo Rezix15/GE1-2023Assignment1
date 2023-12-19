@@ -316,6 +316,7 @@ transform = Transform3D(1, 0, 0, 0, 0.204821, 0.9788, 0, -0.9788, 0.204821, 2.25
 [node name="Pan" parent="." instance=ExtResource("19_tcaoq")]
 transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.2348, 2.9, 12.636)
 
+[connection signal="flourClicked" from="Flour" to="MixingBowl" method="_on_flour_flour_clicked"]
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
 [connection signal="flourStatus" from="Flour" to="Flour/BaseFlour" method="_on_flour_flour_status"]
 [connection signal="input_event" from="Flour/Area3D" to="Flour" method="_on_area_3d_input_event"]
@@ -324,12 +325,15 @@ transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.234
 [connection signal="mouse_entered" from="Butter/Area3D" to="Butter" method="_on_area_3d_mouse_entered"]
 [connection signal="MilkDropEnded" from="MixingBowl/Spawner" to="MixingBowl/BaseMilk" method="_on_spawner_milk_drop_ended"]
 [connection signal="input_event" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_input_event"]
+[connection signal="eggSelected" from="Egg" to="MixingBowl" method="_on_egg_egg_selected"]
 [connection signal="eggSelected" from="Egg" to="MixingBowl/Spawner" method="_on_egg_egg_selected"]
 [connection signal="input_event" from="Egg/Area3D" to="Egg" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Egg/Area3D" to="Egg" method="_on_area_3d_mouse_entered"]
+[connection signal="eggSelected" from="Egg2" to="MixingBowl" method="_on_egg_2_egg_selected"]
 [connection signal="eggSelected" from="Egg2" to="MixingBowl/Spawner" method="_on_egg_2_egg_selected"]
 [connection signal="input_event" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_mouse_entered"]
+[connection signal="milkClicked" from="Milk" to="MixingBowl" method="_on_milk_milk_clicked"]
 [connection signal="milkClicked" from="Milk" to="MixingBowl/Spawner" method="_on_milk_milk_clicked"]
 [connection signal="input_event" from="Milk/Area3D" to="Milk" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Milk/Area3D" to="Milk" method="_on_area_3d_mouse_entered"]

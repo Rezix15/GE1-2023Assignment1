@@ -38,7 +38,6 @@ func _spawnMilk():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(milkTimer.time_left)
 	pass
 
 
