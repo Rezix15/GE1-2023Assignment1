@@ -155,7 +155,7 @@ shape = SubResource("BoxShape3D_4sc6f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -3.1009)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73875, 11.9711)
+transform = Transform3D(1, 0, 0, 0, 0.505507, 0.862823, 0, -0.862823, 0.505507, 0, 9.87262, 10.1148)
 
 [node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.121, 0.5, 3.26143)
@@ -284,6 +284,9 @@ mesh = SubResource("CylinderMesh_v6l4y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stove/Hob4/MeshInstance3D/StaticBody3D"]
 shape = SubResource("CylinderShape3D_0jwiy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.204821, 0.9788, 0, -0.9788, 0.204821, 2.25236, 37.9325, 5.7878)
 
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
 [connection signal="flourStatus" from="Flour" to="Flour/BaseFlour" method="_on_flour_flour_status"]
