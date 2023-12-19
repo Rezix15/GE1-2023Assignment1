@@ -1,4 +1,7 @@
 extends Node3D
+var itemCount:int = 1
+
+signal flourClicked(isSelected)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +15,12 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			print("You clicked flour")
+					
+			if itemCount > 0:	
+				itemCount = itemCount - 1
+				emit_signal("flourClicked", true)
+			else:
+				print("No more flour left")
 			
 	pass # Replace with function body.
 

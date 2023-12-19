@@ -166,6 +166,7 @@ script = ExtResource("11_308u0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Egg2/Area3D"]
 shape = SubResource("BoxShape3D_yylak")
 
+[connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
 [connection signal="input_event" from="Flour/Area3D" to="Flour" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Flour/Area3D" to="Flour" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="Butter/Area3D" to="Butter" method="_on_area_3d_input_event"]
