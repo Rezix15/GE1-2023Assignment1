@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt0prolsdglt5"]
+[gd_scene load_steps=3 format=3 uid="uid://bt0prolsdglt5"]
 
 [ext_resource type="PackedScene" uid="uid://cl5a3viwey17v" path="res://Models/Milk.glb" id="1_qxaa4"]
+[ext_resource type="Script" path="res://Scripts/dropMilk.gd" id="2_prpgt"]
 
 [node name="Root" type="Node3D"]
 
 [node name="Milk" parent="." instance=ExtResource("1_qxaa4")]
-transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 0, 11, 0)
+transform = Transform3D(-0.2, -3.01992e-08, 0, 3.01992e-08, -0.2, 0, 0, 0, 0.2, 0, 0.5, 0)
+script = ExtResource("2_prpgt")
 
 [node name="Timer" type="Timer" parent="Milk"]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Milk/Timer" to="Milk" method="_on_timer_timeout"]
