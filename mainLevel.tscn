@@ -54,7 +54,7 @@ size = Vector3(1.92001, 0.129783, 1.936)
 size = Vector3(0.489884, 0.769955, 0.770567)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gmw0w"]
-size = Vector3(3.05513, 11.9036, 2.2674)
+size = Vector3(3.05513, 6.76492, 2.2674)
 
 [node name="Root" type="Node3D"]
 
@@ -189,7 +189,7 @@ script = ExtResource("18_de73w")
 transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -11.7622, -0.666667, -5.13255)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Milk/Area3D"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 8.82164, 0.908059, 3.82668)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 8.82164, 2.78418, 3.82668)
 shape = SubResource("BoxShape3D_gmw0w")
 
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
