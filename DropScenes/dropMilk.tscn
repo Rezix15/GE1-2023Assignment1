@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt0prolsdglt5"]
+[gd_scene load_steps=4 format=3 uid="uid://bt0prolsdglt5"]
 
 [ext_resource type="PackedScene" uid="uid://cl5a3viwey17v" path="res://Models/Milk.glb" id="1_qxaa4"]
 [ext_resource type="Script" path="res://Scripts/dropMilk.gd" id="2_prpgt"]
+[ext_resource type="AudioStream" uid="uid://ccwrvx1k5d2w1" path="res://AudioFIles/573997__mystudio__pouring-milk1.mp3" id="3_c6p2m"]
 
 [node name="Root" type="Node3D"]
 
@@ -12,5 +13,10 @@ script = ExtResource("2_prpgt")
 [node name="Timer" type="Timer" parent="Milk"]
 wait_time = 0.04
 autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Milk"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+stream = ExtResource("3_c6p2m")
+autoplay = true
 
 [connection signal="timeout" from="Milk/Timer" to="Milk" method="_on_timer_timeout"]

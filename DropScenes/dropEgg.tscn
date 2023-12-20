@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://biqpank5ta541"]
+[gd_scene load_steps=4 format=3 uid="uid://biqpank5ta541"]
 
 [ext_resource type="PackedScene" uid="uid://c2y3pnoihllcx" path="res://Models/EmitObjects/EggBase.glb" id="1_n6qan"]
+[ext_resource type="AudioStream" uid="uid://g21nbpiui883" path="res://AudioFIles/336612__anthousai__egg-crack-02.mp3" id="2_hua24"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2qv3"]
 size = Vector3(2.15961, 0.0709316, 2.51023)
@@ -14,3 +15,7 @@ transform = Transform3D(0.999973, 0, 0.00734777, 0, 1, 0, -0.00734777, 0, 0.9999
 shape = SubResource("BoxShape3D_f2qv3")
 
 [node name="EggBase" parent="RigidBody3D" instance=ExtResource("1_n6qan")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_hua24")
+autoplay = true

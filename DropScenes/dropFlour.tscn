@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://kioymtqbr76a"]
+[gd_scene load_steps=4 format=3 uid="uid://kioymtqbr76a"]
 
 [ext_resource type="PackedScene" uid="uid://5ikna51iju8f" path="res://Models/EmitObjects/BaseFlour.glb" id="1_36vs5"]
+[ext_resource type="AudioStream" uid="uid://dc4yulxrwh6li" path="res://AudioFIles/101387__malakadew__ms_flour.mp3" id="2_vcyb0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3fuhm"]
 size = Vector3(3.24637, 1.20414, 4.00311)
@@ -15,3 +16,7 @@ shape = SubResource("BoxShape3D_3fuhm")
 
 [node name="BaseFlour" parent="RigidBody3D" instance=ExtResource("1_36vs5")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_vcyb0")
+autoplay = true
