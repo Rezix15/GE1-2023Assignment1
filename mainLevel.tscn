@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=52 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cl5a3viwey17v" path="res://Models/Milk.glb" id="17_omyh4"]
 [ext_resource type="Script" path="res://Scripts/Milk.gd" id="18_de73w"]
 [ext_resource type="PackedScene" uid="uid://lseqwv0jik00" path="res://Models/Pan.glb" id="19_tcaoq"]
+[ext_resource type="Script" path="res://Scripts/Switch.gd" id="23_m7eus"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mb1vs"]
 
@@ -80,6 +81,16 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_v6l4y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0jwiy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a8rcg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2m0xl"]
+albedo_color = Color(1, 0.0405029, 0.0223527, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_n4y40"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_424sp"]
+size = Vector3(1.31699, 1.26366, 1)
 
 [node name="Root" type="Node3D"]
 
@@ -196,6 +207,29 @@ script = ExtResource("15_kvqe7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0498221, 0.0169476, -0.0120834)
 material_override = SubResource("StandardMaterial3D_becnw")
 
+[node name="MixingBowl2" parent="." instance=ExtResource("6_h3br6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 26.412, 2.58223, 6.95404)
+visible = false
+
+[node name="Circle" parent="MixingBowl2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11274, -9.53674e-07, 0.0119543)
+transparency = 0.27
+
+[node name="Area3D" type="Area3D" parent="MixingBowl2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MixingBowl2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242663, 0)
+shape = SubResource("BoxShape3D_kn583")
+
+[node name="BaseMilk" parent="MixingBowl2" instance=ExtResource("14_immgm")]
+transform = Transform3D(1.2, 0, 0, 0, 0.8, 0, 0, 0, 1.2, -0.0958274, 0.862115, 0.0184005)
+visible = false
+script = ExtResource("15_kvqe7")
+
+[node name="BaseMilk2" parent="MixingBowl2/BaseMilk" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0498221, 0.0169476, -0.0120834)
+material_override = SubResource("StandardMaterial3D_becnw")
+
 [node name="CircularTray" parent="." instance=ExtResource("9_kcdxp")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.19714, 0.625408, 4.10778)
 
@@ -253,7 +287,7 @@ shape = SubResource("BoxShape3D_axmln")
 [node name="Stove" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stove"]
-transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 50, 25.043, 1, 29.262)
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 50, 25, 1, 29)
 mesh = SubResource("BoxMesh_3wewp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Stove"]
@@ -325,6 +359,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5319, 3.06921, 23.2108)
 [node name="PlateModel" parent="Plate" instance=ExtResource("9_kcdxp")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.293098, 0.0210557, 0)
 
+[node name="Counter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 29)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Counter"]
+transform = Transform3D(2, 0, 0, 0, 11, 0, 0, 0, 50, 0, 5, 0)
+mesh = SubResource("BoxMesh_a8rcg")
+
+[node name="Switch" type="Node3D" parent="Counter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03446, 8.04666, -16.6672)
+script = ExtResource("23_m7eus")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Counter/Switch"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2m0xl")
+mesh = SubResource("PrismMesh_n4y40")
+
+[node name="Area3D" type="Area3D" parent="Counter/Switch/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Counter/Switch/MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_424sp")
+
 [connection signal="flourClicked" from="Flour" to="MixingBowl" method="_on_flour_flour_clicked"]
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
 [connection signal="flourStatus" from="Flour" to="Flour/BaseFlour" method="_on_flour_flour_status"]
@@ -337,6 +392,8 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.293098, 0.0210557, 0
 [connection signal="MilkDropEnded" from="MixingBowl/Spawner" to="MixingBowl/BaseMilk" method="_on_spawner_milk_drop_ended"]
 [connection signal="input_event" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_mouse_entered"]
+[connection signal="input_event" from="MixingBowl2/Area3D" to="MixingBowl2" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="MixingBowl2/Area3D" to="MixingBowl2" method="_on_area_3d_mouse_entered"]
 [connection signal="eggSelected" from="Egg" to="MixingBowl" method="_on_egg_egg_selected"]
 [connection signal="eggSelected" from="Egg" to="MixingBowl/Spawner" method="_on_egg_egg_selected"]
 [connection signal="input_event" from="Egg/Area3D" to="Egg" method="_on_area_3d_input_event"]
@@ -349,7 +406,11 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.293098, 0.0210557, 0
 [connection signal="milkClicked" from="Milk" to="MixingBowl/Spawner" method="_on_milk_milk_clicked"]
 [connection signal="input_event" from="Milk/Area3D" to="Milk" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Milk/Area3D" to="Milk" method="_on_area_3d_mouse_entered"]
+[connection signal="input_event" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_mouse_entered"]
 
 [editable path="MixingBowl"]
 [editable path="MixingBowl/BaseMilk"]
+[editable path="MixingBowl2"]
+[editable path="MixingBowl2/BaseMilk"]
 [editable path="Milk"]
