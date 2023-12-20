@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=55 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
@@ -22,7 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://cl5a3viwey17v" path="res://Models/Milk.glb" id="17_omyh4"]
 [ext_resource type="Script" path="res://Scripts/Milk.gd" id="18_de73w"]
 [ext_resource type="PackedScene" uid="uid://lseqwv0jik00" path="res://Models/Pan.glb" id="19_tcaoq"]
+[ext_resource type="Script" path="res://Scripts/PancakeSpawner.gd" id="22_uqejg"]
 [ext_resource type="Script" path="res://Scripts/Switch.gd" id="23_m7eus"]
+[ext_resource type="Script" path="res://Scripts/Pan.gd" id="24_3uvd4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mb1vs"]
 
@@ -81,6 +83,9 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_v6l4y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0jwiy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qcp46"]
+size = Vector3(1.97266, 0.235363, 1.99395)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a8rcg"]
 
@@ -308,6 +313,10 @@ mesh = SubResource("CylinderMesh_v6l4y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stove/Hob/MeshInstance3D/StaticBody3D"]
 shape = SubResource("CylinderShape3D_0jwiy")
 
+[node name="PancakeSpawner" type="Node3D" parent="Stove/Hob"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5515, 5.83221, 0.175736)
+script = ExtResource("22_uqejg")
+
 [node name="Hob2" type="Node3D" parent="Stove"]
 transform = Transform3D(1, 0, 0.000261799, 0, 1, 0, -0.000261799, 0, 1, 25.346, 2.7, 23.2523)
 
@@ -352,6 +361,13 @@ transform = Transform3D(1, 0, 0, 0, 0.204821, 0.9788, 0, -0.9788, 0.204821, 2.25
 
 [node name="Pan" parent="." instance=ExtResource("19_tcaoq")]
 transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.2348, 2.9, 12.636)
+script = ExtResource("24_3uvd4")
+
+[node name="Area3D" type="Area3D" parent="Pan"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pan/Area3D"]
+transform = Transform3D(1, 0, 3.57628e-07, 0, 1, 0, -3.57628e-07, 0, 1, -0.0117707, 0.107584, 0.0203876)
+shape = SubResource("BoxShape3D_qcp46")
 
 [node name="Plate" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5319, 3.06921, 23.2108)
@@ -406,6 +422,9 @@ shape = SubResource("BoxShape3D_424sp")
 [connection signal="milkClicked" from="Milk" to="MixingBowl/Spawner" method="_on_milk_milk_clicked"]
 [connection signal="input_event" from="Milk/Area3D" to="Milk" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Milk/Area3D" to="Milk" method="_on_area_3d_mouse_entered"]
+[connection signal="panSelected" from="Pan" to="Stove/Hob/PancakeSpawner" method="_on_pan_pan_selected"]
+[connection signal="input_event" from="Pan/Area3D" to="Pan" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Pan/Area3D" to="Pan" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_mouse_entered"]
 
