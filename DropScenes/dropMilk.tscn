@@ -10,7 +10,7 @@ transform = Transform3D(-0.2, -3.01992e-08, 0, 3.01992e-08, -0.2, 0, 0, 0, 0.2, 
 script = ExtResource("2_prpgt")
 
 [node name="Timer" type="Timer" parent="Milk"]
-wait_time = 0.02
+wait_time = 0.04
 autostart = true
 
 [connection signal="timeout" from="Milk/Timer" to="Milk" method="_on_timer_timeout"]

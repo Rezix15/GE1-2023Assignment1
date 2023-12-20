@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://c017u725y5dxf" path="res://Models/EmitObjects/MilkDroplet.glb" id="1_8ky6o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ip7dh"]
-size = Vector3(0.340722, 0.384944, 0.424511)
+size = Vector3(0.482853, 0.384944, 0.314509)
 
 [node name="Root" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0848406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126746, -0.00402373)
 shape = SubResource("BoxShape3D_ip7dh")
 
 [node name="MilkDroplet" parent="RigidBody3D" instance=ExtResource("1_8ky6o")]

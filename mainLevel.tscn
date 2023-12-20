@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=47 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bath82runbwa6" path="res://Models/CircularTray.glb" id="9_kcdxp"]
 [ext_resource type="PackedScene" uid="uid://rno80vmxw1da" path="res://Models/Egg.glb" id="10_avmu0"]
 [ext_resource type="Script" path="res://Scripts/Egg.gd" id="11_308u0"]
+[ext_resource type="Script" path="res://Scripts/CameraControl3D.gd" id="11_hfp71"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="11_tb1lu"]
 [ext_resource type="PackedScene" uid="uid://c5gjwbmdmwjyl" path="res://Models/BaseMilk.glb" id="14_immgm"]
 [ext_resource type="Script" path="res://Scripts/BaseMilk.gd" id="15_kvqe7"]
@@ -165,7 +166,8 @@ shape = SubResource("BoxShape3D_4sc6f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -3.1009)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.505507, 0.862823, 0, -0.862823, 0.505507, 0, 9.87262, 10.1148)
+transform = Transform3D(1, 0, 0, 0, 0.506034, 0.862514, 0, -0.862514, 0.506034, 0, 9.873, 11)
+script = ExtResource("11_hfp71")
 
 [node name="MixingBowl" parent="." instance=ExtResource("6_h3br6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.121, 0.5, 3.26143)
@@ -316,6 +318,12 @@ transform = Transform3D(1, 0, 0, 0, 0.204821, 0.9788, 0, -0.9788, 0.204821, 2.25
 
 [node name="Pan" parent="." instance=ExtResource("19_tcaoq")]
 transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.2348, 2.9, 12.636)
+
+[node name="Plate" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5319, 3.06921, 23.2108)
+
+[node name="PlateModel" parent="Plate" instance=ExtResource("9_kcdxp")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.293098, 0.0210557, 0)
 
 [connection signal="flourClicked" from="Flour" to="MixingBowl" method="_on_flour_flour_clicked"]
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]

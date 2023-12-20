@@ -26,7 +26,7 @@ func _on_mixing_bowl_mix_items():
 	
 	
 	while color_distance(currentColor, targetColor) > 0.1:
-		currentColor = currentColor.lerp(targetColor, 0.001)
+		currentColor = currentColor.lerp(targetColor, 0.1)
 		milkMaterial.albedo_color = currentColor
 		
 	pass # Replace with function body.
