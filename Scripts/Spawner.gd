@@ -30,6 +30,7 @@ func _spawnEgg():
 	eggSpawn = item.instantiate()
 	add_child(eggSpawn)
 	
+	
 func _spawnMilk():
 	var item = load("res://DropScenes/dropMilk.tscn")
 	milkSpawn = item.instantiate()

@@ -30,3 +30,8 @@ func _on_mixing_bowl_mix_items():
 		milkMaterial.albedo_color = currentColor
 		
 	pass # Replace with function body.
+
+
+func _on_pancake_spawner_batter_empty():
+	visible = false
+	pass # Replace with function body.

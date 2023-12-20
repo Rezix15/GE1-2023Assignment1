@@ -3,9 +3,11 @@ extends Node3D
 var cycleRot:float = 0
 var status:bool
 signal stoveSwitch(status)
+var audioPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	status = false
+	audioPlayer = $AudioStreamPlayer3D
 	pass # Replace with function body.
 
 
@@ -13,6 +15,7 @@ func _ready():
 func _process(delta):
 	if status == true:
 		emit_signal("stoveSwitch", true)
+		audioPlayer.play()
 	pass
 
 
