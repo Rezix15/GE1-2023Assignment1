@@ -359,7 +359,7 @@ shape = SubResource("CylinderShape3D_0jwiy")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.204821, 0.9788, 0, -0.9788, 0.204821, 2.25236, 37.9325, 5.7878)
 
-[node name="Pan" parent="." instance=ExtResource("19_tcaoq")]
+[node name="Pan" parent="." groups=["PancakeClass"] instance=ExtResource("19_tcaoq")]
 transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.2348, 2.9, 12.636)
 script = ExtResource("24_3uvd4")
 

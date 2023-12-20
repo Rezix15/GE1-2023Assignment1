@@ -1,20 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8fbbl4obbqsw"]
+[gd_scene load_steps=6 format=3 uid="uid://c8fbbl4obbqsw"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_m5nfd"]
+[ext_resource type="Script" path="res://Scripts/Pancake.gd" id="1_xaxf6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo608"]
+size = Vector3(2.94862, 0.385579, 2.95966)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2iwi"]
 albedo_color = Color(1, 1, 0.678431, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_emdi0"]
 
-[node name="Pancake" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8d7j"]
+size = Vector3(1.13381, 5.70991, 1.19248)
+
+[node name="Pancake" type="Node3D" groups=["PancakeClass"]]
+script = ExtResource("1_xaxf6")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("CylinderShape3D_m5nfd")
+shape = SubResource("BoxShape3D_bo608")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="pancakeMesh" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.36, 0, 0, 0, 3, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_t2iwi")
 mesh = SubResource("SphereMesh_emdi0")
+
+[node name="PancakeArea" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(3, 0, 0, 0, 0.36, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D/PancakeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26539, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/PancakeArea/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_x8d7j")
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_rigid_body_3d_input_event"]
+[connection signal="input_event" from="RigidBody3D/PancakeArea/Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="RigidBody3D/PancakeArea/Area3D" to="." method="_on_area_3d_mouse_entered"]
