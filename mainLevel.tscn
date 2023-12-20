@@ -191,6 +191,7 @@ visible = false
 script = ExtResource("15_kvqe7")
 
 [node name="BaseMilk2" parent="MixingBowl/BaseMilk" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0498221, 0.0169476, -0.0120834)
 material_override = SubResource("StandardMaterial3D_becnw")
 
 [node name="CircularTray" parent="." instance=ExtResource("9_kcdxp")]
@@ -323,8 +324,11 @@ transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.234
 [connection signal="mouse_entered" from="Flour/Area3D" to="Flour" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="Butter/Area3D" to="Butter" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Butter/Area3D" to="Butter" method="_on_area_3d_mouse_entered"]
+[connection signal="mixItems" from="MixingBowl" to="MixingBowl/Spawner" method="_on_mixing_bowl_mix_items"]
+[connection signal="mixItems" from="MixingBowl" to="MixingBowl/BaseMilk" method="_on_mixing_bowl_mix_items"]
 [connection signal="MilkDropEnded" from="MixingBowl/Spawner" to="MixingBowl/BaseMilk" method="_on_spawner_milk_drop_ended"]
 [connection signal="input_event" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_mouse_entered"]
 [connection signal="eggSelected" from="Egg" to="MixingBowl" method="_on_egg_egg_selected"]
 [connection signal="eggSelected" from="Egg" to="MixingBowl/Spawner" method="_on_egg_egg_selected"]
 [connection signal="input_event" from="Egg/Area3D" to="Egg" method="_on_area_3d_input_event"]

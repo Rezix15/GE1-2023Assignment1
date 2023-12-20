@@ -74,3 +74,9 @@ func _on_milk_timer_timeout():
 	remove_child(milkSpawn)
 	isMilkSpawning = false
 	pass # Replace with function body.
+
+
+func _on_mixing_bowl_mix_items():
+	remove_child(flourSpawn)
+	remove_child(eggSpawn)
+	pass # Replace with function body.
