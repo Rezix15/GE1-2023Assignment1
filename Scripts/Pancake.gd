@@ -1,6 +1,8 @@
 extends Node3D
 var pancakeTimer:=Timer.new()
 var timerEnd:bool
+var targetColor
+var currentColor
 
 signal pancakeClicked()
 
@@ -14,22 +16,24 @@ func _ready():
 	pancakeTimer.timeout.connect(_on_pancake_timer_timeout)
 	
 	pancakeTimer.start()
+	
+	targetColor = Color(0.09, 0.09, 0)
+	currentColor = Color(1, 1, 0.53)
+	
 	pass # Replace with function body.
 
-func color_distance(colorA: Color, colorB: Color) -> float:
-	return sqrt(pow(colorA.r - colorB.r, 2) + pow(colorA.g - colorB.g, 2) + pow(colorA.b - colorB.b, 2))
+func color_distance(colorA: Color, colorB: Color, time:float) -> float:
+	return sqrt(pow(colorA.r - colorB.r, 2) + pow(colorA.g - colorB.g, 2) + pow(colorA.b - colorB.b, 2) * (time/10))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var basePancake = get_node("RigidBody3D/pancakeMesh")
 	var pancakeMaterial = basePancake.material_override
 	
-	#var targetColor = Color(0.09, 0.09, 0)
-	#var currentColor = Color(1, 1, 0.53)
 	
-	#while color_distance(currentColor, targetColor) >= 0.1:
-		#currentColor = currentColor.lerp(targetColor, 0.1)
-		#pancakeMaterial.albedo_color = currentColor
+	while color_distance(currentColor, targetColor, delta) >= 0.1:
+		currentColor = currentColor.lerp(targetColor, 0.1)
+		pancakeMaterial.albedo_color = currentColor
 
 
 func _on_pancake_timer_timeout():
