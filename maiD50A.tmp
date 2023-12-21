@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=73 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
@@ -30,7 +30,6 @@
 [ext_resource type="AudioStream" uid="uid://dggvcu3hfltpp" path="res://AudioFIles/625755__blizzardlady__stove-turning-on.mp3" id="26_iegjw"]
 [ext_resource type="Script" path="res://Scripts/Whisk.gd" id="29_mx8bt"]
 [ext_resource type="PackedScene" uid="uid://dktvrbwhycv8a" path="res://Models/Whisk.glb" id="29_q6mhx"]
-[ext_resource type="Script" path="res://Scripts/WhiskRigidBody3D.gd" id="30_rbmvx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mb1vs"]
 
@@ -58,7 +57,7 @@ size = Vector3(2.17198, 0.481627, 1.45625)
 size = Vector3(0.0913402, 0.018232, 0.203203)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn583"]
-size = Vector3(2.71441, 1.33156, 1.83441)
+size = Vector3(2.71441, 1.33156, 2.13408)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cpl4"]
 
@@ -162,7 +161,7 @@ color_initial_ramp = SubResource("GradientTexture1D_23cdl")
 [sub_resource type="PrismMesh" id="PrismMesh_b7a64"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g1a2w"]
-height = 3.70335
+height = 5.84985
 
 [node name="Root" type="Node3D"]
 
@@ -252,10 +251,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00739601, 0)
 shape = SubResource("BoxShape3D_4sc6f")
 
 [node name="Fruit_Bowl" parent="." instance=ExtResource("5_gwdod")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.552562, -3.1009)
-
-[node name="Apple" parent="Fruit_Bowl" index="1"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.374728, 0.522851, -0.473422)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507444, 0.462503, -3.1009)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.506034, 0.862514, 0, -0.862514, 0.506034, 0, 9.873, 11)
@@ -374,7 +370,6 @@ material_override = SubResource("StandardMaterial3D_mqhgm")
 mesh = SubResource("BoxMesh_8uvsd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor/MeshInstance3D"]
-input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_axmln")
@@ -521,14 +516,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0949, 1.65668, 4.62424)
 script = ExtResource("29_mx8bt")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Whisk"]
-gravity_scale = 0.0
-lock_rotation = true
-script = ExtResource("30_rbmvx")
 
 [node name="WhiskMesh" parent="Whisk/RigidBody3D" instance=ExtResource("29_q6mhx")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Whisk/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_g1a2w")
 
 [connection signal="flourClicked" from="Flour" to="MixingBowl" method="_on_flour_flour_clicked"]
@@ -568,11 +559,9 @@ shape = SubResource("CylinderShape3D_g1a2w")
 [connection signal="mouse_entered" from="Pan/Area3D" to="Pan" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_mouse_entered"]
-[connection signal="gravityStatus" from="Whisk" to="Whisk/RigidBody3D" method="_on_whisk_gravity_status"]
 [connection signal="input_event" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_input_event"]
 [connection signal="mouse_entered" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_mouse_entered"]
 
-[editable path="Fruit_Bowl"]
 [editable path="MixingBowl"]
 [editable path="MixingBowl/BaseMilk"]
 [editable path="MixingBowl2"]
