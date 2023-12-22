@@ -8,12 +8,16 @@ var burnColor
 var readyColor
 var takeoutColor
 
+var PancakeStatusText
+
 signal pancakeClicked()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	basePancake = get_node("RigidBody3D/pancakeMesh")
 	pancakeMaterial = basePancake.material_override
+	
+	PancakeStatusText = $RigidBody3D/PancakeStatusText
 	
 	pancakeTimer.one_shot = true
 	add_child(pancakeTimer)
@@ -36,6 +40,8 @@ func _ready():
 	readyColor = Color(1, 1, 0.53)
 	takeoutColor = Color(1,1,0.59)
 	
+	PancakeStatusText.visible = false
+	
 	pass # Replace with function body.
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,8 +55,8 @@ func _process(delta):
 
 func _on_pancake_timer_timeout():
 	pancakeMaterial.albedo_color = takeoutColor
-	print("Takeout")
 	timerEnd = true
+	PancakeStatusText.visible = true
 	pass
 	
 func _on_pancake_burn_timer_timeout():
@@ -61,8 +67,8 @@ func _on_pancake_burn_timer_timeout():
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and timerEnd:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			print("Pancake clicked")
 			emit_signal("pancakeClicked")
+			PancakeStatusText.visible = false
 			pancakeBurnTimer.stop()
 	pass # Replace with function body.
 

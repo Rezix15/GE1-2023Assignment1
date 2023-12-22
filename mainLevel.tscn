@@ -208,7 +208,7 @@ transform = Transform3D(5, -1.42109e-14, 0, 1.42109e-14, 5, 0, 0, 0, 5, -7.32718
 script = ExtResource("3_elvcu")
 
 [node name="Area3D" type="Area3D" parent="Flour"]
-transform = Transform3D(1, 2.11758e-22, 0, -2.11758e-22, 1, 0, 0, 0, 1, 0.0562992, 0.234484, 0)
+transform = Transform3D(1, 6.35275e-22, 0, -6.35275e-22, 1, 0, 0, 0, 1, 0.0562992, 0.234484, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Flour/Area3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0419415, -0.0271991, 0)
@@ -329,7 +329,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0449176, 0)
 shape = SubResource("BoxShape3D_0cbjb")
 
 [node name="Egg" parent="." instance=ExtResource("10_avmu0")]
-transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -3.77253, 0.701511, 3.60848)
+transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -4.518, 0.702, 4.772)
 script = ExtResource("11_308u0")
 
 [node name="Area3D" type="Area3D" parent="Egg"]
@@ -338,13 +338,13 @@ script = ExtResource("11_308u0")
 shape = SubResource("BoxShape3D_yylak")
 
 [node name="EggText" type="Label3D" parent="Egg"]
-transform = Transform3D(-8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0, 2, 0.806928, 0.479232, 0.732961)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.860138, 0.0327384, -0.0476427)
 visible = false
 text = "Egg"
-font_size = 60
+font_size = 100
 
 [node name="Egg2" parent="." instance=ExtResource("10_avmu0")]
-transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -4.51786, 0.701511, 4.72236)
+transform = Transform3D(-6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0, 1.5, -3.773, 0.702, 3.608)
 script = ExtResource("11_308u0")
 
 [node name="Area3D" type="Area3D" parent="Egg2"]
@@ -353,10 +353,10 @@ script = ExtResource("11_308u0")
 shape = SubResource("BoxShape3D_yylak")
 
 [node name="EggText" type="Label3D" parent="Egg2"]
-transform = Transform3D(-8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0, 2, 0.84743, -0.496886, -0.742587)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.83774, -0.0322516, -0.0487862)
 visible = false
 text = "Egg"
-font_size = 60
+font_size = 100
 
 [node name="Milk" parent="." instance=ExtResource("17_omyh4")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 8.82164, 0.5, 3.84941)
@@ -468,14 +468,6 @@ transform = Transform3D(1, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 3.57628e-07, 0, 1, 0, -3.57628e-07, 0, 1, -0.0117707, 0.107584, 0.0203876)
 shape = SubResource("BoxShape3D_qcp46")
 
-[node name="PancakeStatusText" type="Label3D" parent="Pan"]
-transform = Transform3D(1.75, 0, 3.03109, 0, 3.5, 0, -3.03109, 0, 1.75, -0.259544, 1.40593, -0.0805922)
-visible = false
-text = "Status"
-outline_size = 6
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
 [node name="Node3D" type="Node3D" parent="Pan"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.557237, 0)
 visible = false
@@ -542,11 +534,18 @@ script = ExtResource("30_rbmvx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_g1a2w")
 
+[node name="WhiskText" type="Label3D" parent="Whisk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.12992, -0.00880671)
+visible = false
+text = "Whisk"
+font_size = 100
+
 [connection signal="flourClicked" from="Flour" to="MixingBowl" method="_on_flour_flour_clicked"]
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
 [connection signal="flourStatus" from="Flour" to="Flour/BaseFlour" method="_on_flour_flour_status"]
 [connection signal="input_event" from="Flour/Area3D" to="Flour" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Flour/Area3D" to="Flour" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Flour/Area3D" to="Flour" method="_on_area_3d_mouse_exited"]
 [connection signal="input_event" from="Butter/Area3D" to="Butter" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Butter/Area3D" to="Butter" method="_on_area_3d_mouse_entered"]
 [connection signal="mixItems" from="MixingBowl" to="MixingBowl/Spawner" method="_on_mixing_bowl_mix_items"]
@@ -569,10 +568,12 @@ shape = SubResource("CylinderShape3D_g1a2w")
 [connection signal="eggSelected" from="Egg" to="MixingBowl/Spawner" method="_on_egg_egg_selected"]
 [connection signal="input_event" from="Egg/Area3D" to="Egg" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Egg/Area3D" to="Egg" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Egg/Area3D" to="Egg" method="_on_area_3d_mouse_exited"]
 [connection signal="eggSelected" from="Egg2" to="MixingBowl" method="_on_egg_2_egg_selected"]
 [connection signal="eggSelected" from="Egg2" to="MixingBowl/Spawner" method="_on_egg_2_egg_selected"]
 [connection signal="input_event" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Egg2/Area3D" to="Egg2" method="_on_area_3d_mouse_exited"]
 [connection signal="milkClicked" from="Milk" to="MixingBowl" method="_on_milk_milk_clicked"]
 [connection signal="milkClicked" from="Milk" to="MixingBowl/Spawner" method="_on_milk_milk_clicked"]
 [connection signal="input_event" from="Milk/Area3D" to="Milk" method="_on_area_3d_input_event"]
@@ -592,6 +593,7 @@ shape = SubResource("CylinderShape3D_g1a2w")
 [connection signal="mixItems" from="Whisk" to="MixingBowl" method="_on_whisk_mix_items"]
 [connection signal="input_event" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_input_event"]
 [connection signal="mouse_entered" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_mouse_exited"]
 
 [editable path="Fruit_Bowl"]
 [editable path="MixingBowl"]

@@ -14,11 +14,14 @@ signal gravityStatus(status:bool)
 
 signal mixItems()
 
+var whiskText
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	moveTowardsMouse = false
 	canMix = false
 	prevPos = global_position
+	whiskText = $WhiskText
 	pass # Replace with function body.
 
 
@@ -65,6 +68,7 @@ func ScreenPointToRay():
 	return Vector3()
 		
 func _on_rigid_body_3d_mouse_entered():
+	whiskText.visible = true
 	pass
 
 
@@ -84,4 +88,9 @@ func _on_mixing_bowl_mix_items():
 
 func _on_mixing_bowl_ready_to_mix():
 	canMix = true
+	pass # Replace with function body.
+
+
+func _on_rigid_body_3d_mouse_exited():
+	whiskText.visible = false
 	pass # Replace with function body.

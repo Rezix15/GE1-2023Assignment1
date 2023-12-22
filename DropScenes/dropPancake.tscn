@@ -19,6 +19,12 @@ script = ExtResource("1_xaxf6")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
+[node name="PancakeStatusText" type="Label3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0971265, 4.46268, 0.0131807)
+text = "Takeout"
+font_size = 150
+outline_size = 6
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_bo608")
 
