@@ -17,6 +17,7 @@ var isFinished
 
 var pancakeCountText
 
+
 signal batterEmpty()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,12 +34,14 @@ func _spawnPancake():
 	add_child(pancakeSpawn)
 	
 	pancakeSpawn.connect("pancakeClicked", _on_pancake_clicked)
+	
 
 
 func _on_pancake_clicked(pancakeScore):
 	pancakeSpawn.transform.origin = Vector3(0, 4, 10)
 	score += pancakeScore
 	
+	pancakeCountText.text = str(5 - pancakeCount) + " / 5"
 	
 	if isFinished and score >= 700:
 		objectiveText.text = "All tasks completed. Enjoy your perfect delicious pancakes!"
