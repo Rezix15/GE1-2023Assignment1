@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=75 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/CameraControl3D.gd" id="11_hfp71"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="11_tb1lu"]
 [ext_resource type="PackedScene" uid="uid://c5gjwbmdmwjyl" path="res://Models/BaseMilk.glb" id="14_immgm"]
+[ext_resource type="Script" path="res://Scripts/mixingBowlArea.gd" id="15_grrkn"]
 [ext_resource type="Script" path="res://Scripts/BaseMilk.gd" id="15_kvqe7"]
 [ext_resource type="Script" path="res://Scripts/MixingBowl2.gd" id="17_6yqkl"]
 [ext_resource type="PackedScene" uid="uid://cl5a3viwey17v" path="res://Models/Milk.glb" id="17_omyh4"]
@@ -274,6 +275,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00775, 0)
 script = ExtResource("11_tb1lu")
 
 [node name="Area3D" type="Area3D" parent="MixingBowl"]
+script = ExtResource("15_grrkn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MixingBowl/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242663, 0)
@@ -539,11 +541,17 @@ shape = SubResource("CylinderShape3D_g1a2w")
 [connection signal="input_event" from="Butter/Area3D" to="Butter" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Butter/Area3D" to="Butter" method="_on_area_3d_mouse_entered"]
 [connection signal="mixItems" from="MixingBowl" to="MixingBowl/Spawner" method="_on_mixing_bowl_mix_items"]
+[connection signal="mixItems" from="MixingBowl" to="MixingBowl/Area3D" method="_on_mixing_bowl_mix_items"]
 [connection signal="mixItems" from="MixingBowl" to="MixingBowl/BaseMilk" method="_on_mixing_bowl_mix_items"]
 [connection signal="mixItems" from="MixingBowl" to="MixingBowl2" method="_on_mixing_bowl_mix_items"]
 [connection signal="mixItems" from="MixingBowl" to="MixingBowl2/BaseMilk" method="_on_mixing_bowl_mix_items"]
 [connection signal="mixItems" from="MixingBowl" to="Stove/Hob/PancakeSpawner" method="_on_mixing_bowl_mix_items"]
+[connection signal="mixItems" from="MixingBowl" to="Whisk" method="_on_mixing_bowl_mix_items"]
+[connection signal="readyToMix" from="MixingBowl" to="Whisk" method="_on_mixing_bowl_ready_to_mix"]
 [connection signal="MilkDropEnded" from="MixingBowl/Spawner" to="MixingBowl/BaseMilk" method="_on_spawner_milk_drop_ended"]
+[connection signal="area_entered" from="MixingBowl/Area3D" to="MixingBowl/Area3D" method="_on_area_entered"]
+[connection signal="area_entered" from="MixingBowl/Area3D" to="Whisk" method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="MixingBowl/Area3D" to="Whisk" method="_on_area_3d_body_entered"]
 [connection signal="input_event" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="MixingBowl/Area3D" to="MixingBowl" method="_on_area_3d_mouse_entered"]
 [connection signal="input_event" from="MixingBowl2/Area3D" to="MixingBowl2" method="_on_area_3d_input_event"]

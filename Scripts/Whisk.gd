@@ -2,11 +2,14 @@ extends Node3D
 
 var moveTowardsMouse:bool
 
+var canMix:bool
+
 signal gravityStatus(status:bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	moveTowardsMouse = false
+	canMix = false
 	pass # Replace with function body.
 
 
@@ -43,10 +46,23 @@ func ScreenPointToRay():
 	var rayArray = spaceState.intersect_ray(PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd))
 	
 	if rayArray.has("position"):
-		print(rayArray["position"])
 		return rayArray["position"]
 		
 	return Vector3()
 		
 func _on_rigid_body_3d_mouse_entered():
-	print("Hovering over whisk")
+	pass
+
+
+func _on_area_3d_body_entered(body):
+	if canMix:
+		print("Stir around")
+
+
+func _on_mixing_bowl_mix_items():
+	pass # Replace with function body.
+
+
+func _on_mixing_bowl_ready_to_mix():
+	canMix = true
+	pass # Replace with function body.

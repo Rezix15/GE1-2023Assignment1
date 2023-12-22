@@ -17,7 +17,6 @@ func _ready():
 	milkTimer.wait_time = 4.0
 	
 	milkTimer.timeout.connect(_on_milk_timer_timeout)
-	pass
 
 
 func _spawnFlour():
@@ -46,38 +45,32 @@ func _on_flour_flour_clicked(isSelected):
 	if isSelected == true:
 		_spawnFlour()
 		isSelected = false
-	pass # Replace with function body.
 
 
 func _on_egg_egg_selected(isSelected):
 	if isSelected == true:
 		_spawnEgg()
 		isSelected = false
-	pass # Replace with function body.
 
 
 func _on_egg_2_egg_selected(isSelected):
 	if isSelected == true:
 		_spawnEgg()
 		isSelected = false
-	pass # Replace with function body.
 
 
 func _on_milk_milk_clicked(isSelected):
 	_spawnMilk()
 	if isMilkSpawning:
 		milkTimer.start()
-	pass # Replace with function body.
 
 
 func _on_milk_timer_timeout():
 	emit_signal("MilkDropEnded", true)
 	remove_child(milkSpawn)
 	isMilkSpawning = false
-	pass # Replace with function body.
 
 
 func _on_mixing_bowl_mix_items():
 	remove_child(flourSpawn)
 	remove_child(eggSpawn)
-	pass # Replace with function body.
