@@ -1,13 +1,20 @@
 extends Node3D
+var basePancake
+var pancakeMaterial
 var pancakeTimer:=Timer.new()
+var pancakeBurnTimer:=Timer.new()
 var timerEnd:bool
-var targetColor
-var currentColor
+var burnColor
+var readyColor
+var takeoutColor
 
 signal pancakeClicked()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	basePancake = get_node("RigidBody3D/pancakeMesh")
+	pancakeMaterial = basePancake.material_override
+	
 	pancakeTimer.one_shot = true
 	add_child(pancakeTimer)
 	
@@ -17,28 +24,37 @@ func _ready():
 	
 	pancakeTimer.start()
 	
-	targetColor = Color(0.09, 0.09, 0)
-	currentColor = Color(1, 1, 0.53)
+	pancakeBurnTimer.one_shot = true
+	add_child(pancakeBurnTimer)
+	
+	pancakeBurnTimer.wait_time = 20.0
+	pancakeBurnTimer.timeout.connect(_on_pancake_burn_timer_timeout)
+	
+	pancakeBurnTimer.start()
+	
+	burnColor = Color(0.09, 0.09, 0)
+	readyColor = Color(1, 1, 0.53)
+	takeoutColor = Color(1,1,0.59)
 	
 	pass # Replace with function body.
-
-func color_distance(colorA: Color, colorB: Color, time:float) -> float:
-	return sqrt(pow(colorA.r - colorB.r, 2) + pow(colorA.g - colorB.g, 2) + pow(colorA.b - colorB.b, 2) * (time/10))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var basePancake = get_node("RigidBody3D/pancakeMesh")
-	var pancakeMaterial = basePancake.material_override
+	var burningColor = Color(0.63, 0.61, 0)
 	
-	
-	while color_distance(currentColor, targetColor, delta) >= 0.1:
-		currentColor = currentColor.lerp(targetColor, 0.1)
-		pancakeMaterial.albedo_color = currentColor
+	if pancakeBurnTimer.time_left >= 3.0 and pancakeBurnTimer.time_left <= 7.0:
+		pancakeMaterial.albedo_color = burningColor
+	pass
 
 
 func _on_pancake_timer_timeout():
+	pancakeMaterial.albedo_color = takeoutColor
 	print("Takeout")
 	timerEnd = true
+	pass
+	
+func _on_pancake_burn_timer_timeout():
+	pancakeMaterial.albedo_color = burnColor
 	pass
 
 
@@ -47,6 +63,7 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 			print("Pancake clicked")
 			emit_signal("pancakeClicked")
+			pancakeBurnTimer.stop()
 	pass # Replace with function body.
 
 

@@ -26,9 +26,8 @@ func _ready():
 func _process(delta):
 	currentPos = global_position
 	
-	if abs(currentPos.x) > abs(prevPos.x) and abs(currentPos.z) > abs(prevPos.z):
+	if currentPos.x != prevPos.x and currentPos.z != prevPos.z:
 		isMoving = true
-		print("You are moving the whisk")
 	
 	prevPos = currentPos
 
@@ -71,8 +70,6 @@ func _on_rigid_body_3d_mouse_entered():
 
 func _on_area_3d_body_entered(body):
 	if canMix:
-		print("Stir around")
-		
 		if isMoving:
 			if count < 15:
 				count+=1

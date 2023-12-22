@@ -5,10 +5,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_bo608"]
 size = Vector3(2.94862, 0.385579, 2.95966)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2iwi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qc80"]
+resource_local_to_scene = true
 albedo_color = Color(1, 1, 0.678431, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_emdi0"]
+[sub_resource type="SphereMesh" id="SphereMesh_ehvnd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8d7j"]
 size = Vector3(1.13381, 5.70991, 1.19248)
@@ -23,8 +24,8 @@ shape = SubResource("BoxShape3D_bo608")
 
 [node name="pancakeMesh" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.36, 0, 0, 0, 3, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_t2iwi")
-mesh = SubResource("SphereMesh_emdi0")
+material_override = SubResource("StandardMaterial3D_6qc80")
+mesh = SubResource("SphereMesh_ehvnd")
 
 [node name="PancakeArea" type="Node3D" parent="RigidBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.36, 0, 0, 0, 3, 0, 0, 0)
