@@ -540,6 +540,68 @@ visible = false
 text = "Whisk"
 font_size = 100
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScorePanel" type="Panel" parent="Control"]
+offset_right = 200.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="RichTextLabel" parent="Control/ScorePanel"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "Score:"
+
+[node name="ScoreText" type="RichTextLabel" parent="Control/ScorePanel"]
+layout_mode = 0
+offset_left = 59.0
+offset_right = 139.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="ProgressPanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 952.25
+offset_right = 1152.25
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ProgressPanel"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 40.0
+text = "Progress:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/ProgressPanel"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -1.0
+offset_right = 109.0
+offset_bottom = 26.0
+step = 10.0
+
+[node name="ObjectivePanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 307.0
+offset_right = 857.0
+offset_bottom = 40.0
+
+[node name="ObjectiveLabel" type="RichTextLabel" parent="Control/ObjectivePanel"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 40.0
+text = "Objective:"
+
+[node name="CurrentObjectiveText" type="RichTextLabel" parent="Control/ObjectivePanel"]
+layout_mode = 0
+offset_left = 98.0
+offset_right = 548.0
+offset_bottom = 40.0
+text = "Add The Ingridients into the bowl"
+
 [connection signal="flourClicked" from="Flour" to="MixingBowl" method="_on_flour_flour_clicked"]
 [connection signal="flourClicked" from="Flour" to="MixingBowl/Spawner" method="_on_flour_flour_clicked"]
 [connection signal="flourStatus" from="Flour" to="Flour/BaseFlour" method="_on_flour_flour_status"]
