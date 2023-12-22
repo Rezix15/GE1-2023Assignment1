@@ -585,8 +585,8 @@ step = 10.0
 
 [node name="ObjectivePanel" type="Panel" parent="Control"]
 layout_mode = 0
-offset_left = 307.0
-offset_right = 857.0
+offset_left = 230.0
+offset_right = 930.0
 offset_bottom = 40.0
 
 [node name="ObjectiveLabel" type="RichTextLabel" parent="Control/ObjectivePanel"]
@@ -598,7 +598,7 @@ text = "Objective:"
 [node name="CurrentObjectiveText" type="RichTextLabel" parent="Control/ObjectivePanel"]
 layout_mode = 0
 offset_left = 98.0
-offset_right = 548.0
+offset_right = 698.0
 offset_bottom = 40.0
 text = "Add The Ingridients into the bowl"
 

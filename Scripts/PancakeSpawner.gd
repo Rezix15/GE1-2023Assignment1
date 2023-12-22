@@ -11,6 +11,8 @@ var objectiveText
 
 var score
 
+var isFinished
+
 #var pancakeScore
 
 signal batterEmpty()
@@ -19,7 +21,7 @@ func _ready():
 	hasMixed = false
 	
 	scoreText = get_node("../../../Control/ScorePanel/ScoreText")
-	objectiveText = get_node("../Control/ObjectivePanel/CurrentObjectiveText")
+	objectiveText = get_node("../../../Control/ObjectivePanel/CurrentObjectiveText")
 
 
 func _spawnPancake():
@@ -32,19 +34,27 @@ func _spawnPancake():
 
 func _on_pancake_clicked(pancakeScore):
 	pancakeSpawn.transform.origin = Vector3(0, 4, 10)
-	print(pancakeScore)
 	score += pancakeScore
 	
-	print(scoreText.text)
-	pass
-
+	
+	if isFinished and score >= 700:
+		objectiveText.text = "All tasks completed. Enjoy your perfect delicious pancakes!"
+	elif isFinished and score >= 100 and score < 200:
+		objectiveText.text = "All tasks completed. Enjoy those burnt pancakes!"
+	elif isFinished and score >= 500 and score < 700:
+		objectiveText.text = "All tasks completed. Enjoy your delicious pancakes!"
+	elif isFinished and score >= 350 and score < 500:
+		objectiveText.text = "All tasks completed. Enjoy your pancakes with the effort you put in!"
+	elif isFinished and score >= 200 and score < 350:
+		objectiveText.text = "All tasks completed. Enjoy those poor pancakes !"	
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if hasMixed:
 		scoreText.text = str(score)
 	if pancakeCount == 0:
 		emit_signal("batterEmpty")
-	pass
+		isFinished = true
 
 
 func _on_pan_pan_selected():
