@@ -577,6 +577,7 @@ shape = SubResource("CylinderShape3D_g1a2w")
 [connection signal="input_event" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_mouse_entered"]
 [connection signal="gravityStatus" from="Whisk" to="Whisk/RigidBody3D" method="_on_whisk_gravity_status"]
+[connection signal="mixItems" from="Whisk" to="MixingBowl" method="_on_whisk_mix_items"]
 [connection signal="input_event" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_input_event"]
 [connection signal="mouse_entered" from="Whisk/RigidBody3D" to="Whisk" method="_on_rigid_body_3d_mouse_entered"]
 

@@ -21,9 +21,7 @@ func _process(delta):
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true and itemBowl.size() >= 4:
-			print("Mixing process")
-			mixed = true
-			emit_signal("mixItems")
+			pass
 			
 	pass # Replace with function body.
 
@@ -57,4 +55,11 @@ func _on_area_3d_mouse_entered():
 	
 	if itemBowl.size() >= 4 and mixed == false:
 		print("Click to mix")
+	pass # Replace with function body.
+
+
+func _on_whisk_mix_items():
+	print("Mixing process")
+	mixed = true
+	emit_signal("mixItems")
 	pass # Replace with function body.

@@ -2,20 +2,35 @@ extends Node3D
 
 var moveTowardsMouse:bool
 
+var count:int = 0
+
 var canMix:bool
 
+var currentPos
+var prevPos
+var isMoving:bool
+
 signal gravityStatus(status:bool)
+
+signal mixItems()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	moveTowardsMouse = false
 	canMix = false
+	prevPos = global_position
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	currentPos = global_position
+	
+	if abs(currentPos.x) > abs(prevPos.x) and abs(currentPos.z) > abs(prevPos.z):
+		isMoving = true
+		print("You are moving the whisk")
+	
+	prevPos = currentPos
 
 
 func _physics_process(delta):
@@ -57,6 +72,13 @@ func _on_rigid_body_3d_mouse_entered():
 func _on_area_3d_body_entered(body):
 	if canMix:
 		print("Stir around")
+		
+		if isMoving:
+			if count < 15:
+				count+=1
+			else:
+				emit_signal("mixItems")
+				print("Items mixed")
 
 
 func _on_mixing_bowl_mix_items():
