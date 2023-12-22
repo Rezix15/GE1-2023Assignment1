@@ -3,9 +3,9 @@
 My assignment for this semester aims to be a cooking game developed in the Godot engine in which users bake a cake by mixing ingredients and baking too. Points are earned for completion.
 
 # Project Title Cooking Pancakes
-Name: Olabode Balinga \n
-Student Number: C20478706 \n
-Video Link: https://www.youtube.com/watch?v=6XpFlrvUkqU \n
+Name: Olabode Balinga                                                                                                                                                                           
+Student Number: C20478706                                                                                                                                                                       
+Video Link: https://www.youtube.com/watch?v=6XpFlrvUkqU
 
 # Description of project
 A simple cooking game made using the Godot Engine in which users can click on the ingridents (Eggs, Milk, Flour) as they drop into the mixing bowl. Stir the mixing bowl using the whisk to create your batter and pour it into the pan on the next screen to create your pancakes. Points are rewarded for how well you cook your pancakes.
