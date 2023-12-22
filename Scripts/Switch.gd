@@ -14,20 +14,20 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if status == true:
-		emit_signal("stoveSwitch", true)
 		audioPlayer.play()
+		cycleRot = deg_to_rad(180)
+		global_rotation = Vector3(0, 0, cycleRot)
+	else:
+		cycleRot = deg_to_rad(0)
+		global_rotation = Vector3(0, 0, cycleRot)
 	pass
 
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			cycleRot += deg_to_rad(180)
-			rotate_z(cycleRot)
-			print(rad_to_deg(cycleRot))
 			status = !status
-			print(status)
-			
+			emit_signal("stoveSwitch", status)
 	pass # Replace with function body.
 
 

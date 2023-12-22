@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cbrr130fydhu"]
+[gd_scene load_steps=78 format=3 uid="uid://cbrr130fydhu"]
 
 [ext_resource type="PackedScene" uid="uid://h340ysx7q8wg" path="res://Models/ButterTray.glb" id="1_n36hg"]
 [ext_resource type="PackedScene" uid="uid://brq6ke16nmvnk" path="res://Models/Butter.glb" id="2_gmn3c"]
@@ -28,7 +28,9 @@
 [ext_resource type="Script" path="res://Scripts/PancakeSpawner.gd" id="22_uqejg"]
 [ext_resource type="Script" path="res://Scripts/Switch.gd" id="23_m7eus"]
 [ext_resource type="Script" path="res://Scripts/Pan.gd" id="24_3uvd4"]
+[ext_resource type="Script" path="res://Scripts/Hob.gd" id="25_rknej"]
 [ext_resource type="AudioStream" uid="uid://dggvcu3hfltpp" path="res://AudioFIles/625755__blizzardlady__stove-turning-on.mp3" id="26_iegjw"]
+[ext_resource type="AudioStream" uid="uid://dhuxcoccw7s5o" path="res://AudioFIles/353124__benjaminnelan__frying-pan-sizzle.mp3" id="28_hhbxs"]
 [ext_resource type="Script" path="res://Scripts/Whisk.gd" id="29_mx8bt"]
 [ext_resource type="PackedScene" uid="uid://dktvrbwhycv8a" path="res://Models/Whisk.glb" id="29_q6mhx"]
 [ext_resource type="Script" path="res://Scripts/WhiskRigidBody3D.gd" id="30_rbmvx"]
@@ -119,12 +121,15 @@ size = Vector3(3.05513, 6.76492, 2.2674)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mv3lq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8ods"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_482fs"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v6l4y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0jwiy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8ods"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcp46"]
 size = Vector3(1.97266, 0.235363, 1.99395)
@@ -394,10 +399,11 @@ shape = SubResource("BoxShape3D_mv3lq")
 
 [node name="Hob" type="Node3D" parent="Stove"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.346, 2.7, 12.6084)
+script = ExtResource("25_rknej")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stove/Hob"]
 transform = Transform3D(7, 0, 0, 0, 0.2, 0, 0, 0, 7, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_q8ods")
+material_override = SubResource("StandardMaterial3D_482fs")
 mesh = SubResource("CylinderMesh_v6l4y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Stove/Hob/MeshInstance3D"]
@@ -456,7 +462,7 @@ transform = Transform3D(-2.16506, 0, -1.25, 0, 2.5, 0, 1.25, 0, -2.16506, 25.234
 script = ExtResource("24_3uvd4")
 
 [node name="Area3D" type="Area3D" parent="Pan"]
-transform = Transform3D(1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pan/Area3D"]
 transform = Transform3D(1, 0, 3.57628e-07, 0, 1, 0, -3.57628e-07, 0, 1, -0.0117707, 0.107584, 0.0203876)
@@ -481,6 +487,9 @@ mesh = SubResource("PrismMesh_qyekt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pan/Node3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_nx0m7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pan"]
+stream = ExtResource("28_hhbxs")
 
 [node name="Plate" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5319, 3.06921, 23.2108)
@@ -572,8 +581,11 @@ shape = SubResource("CylinderShape3D_g1a2w")
 [connection signal="batterEmpty" from="Stove/Hob/PancakeSpawner" to="MixingBowl2/BaseMilk" method="_on_pancake_spawner_batter_empty"]
 [connection signal="panSelected" from="Pan" to="Stove/Hob/PancakeSpawner" method="_on_pan_pan_selected"]
 [connection signal="body_entered" from="Pan/Area3D" to="Pan" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Pan/Area3D" to="Pan" method="_on_area_3d_body_exited"]
 [connection signal="input_event" from="Pan/Area3D" to="Pan" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Pan/Area3D" to="Pan" method="_on_area_3d_mouse_entered"]
+[connection signal="stoveSwitch" from="Counter/Switch" to="Stove/Hob" method="_on_switch_stove_switch"]
+[connection signal="stoveSwitch" from="Counter/Switch" to="Pan" method="_on_switch_stove_switch"]
 [connection signal="input_event" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Counter/Switch/MeshInstance3D/Area3D" to="Counter/Switch" method="_on_area_3d_mouse_entered"]
 [connection signal="gravityStatus" from="Whisk" to="Whisk/RigidBody3D" method="_on_whisk_gravity_status"]
