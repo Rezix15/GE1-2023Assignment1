@@ -9,11 +9,13 @@ var score:int = 0
 var scoreText
 var objectiveText
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mixed = false
 	scoreText = get_node("../Control/ScorePanel/ScoreText")
 	objectiveText = get_node("../Control/ObjectivePanel/CurrentObjectiveText")
+	
 	
 	objectiveText.text = "1.  Add Ingredients To The Mixing Bowl"
 	hasMixed = false

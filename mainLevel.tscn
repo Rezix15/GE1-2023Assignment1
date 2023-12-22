@@ -489,6 +489,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5319, 3.06921, 23.2108)
 [node name="PlateModel" parent="Plate" instance=ExtResource("9_kcdxp")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.293098, 0.0210557, 0)
 
+[node name="PancakeCountText" type="Label3D" parent="Plate"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.431589, 5.30541, 0)
+text = "1/5"
+font_size = 400
+
 [node name="Counter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 29)
 
@@ -562,26 +567,6 @@ offset_left = 59.0
 offset_right = 139.0
 offset_bottom = 40.0
 text = "0"
-
-[node name="ProgressPanel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 952.25
-offset_right = 1152.25
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/ProgressPanel"]
-layout_mode = 0
-offset_right = 120.0
-offset_bottom = 40.0
-text = "Progress:"
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/ProgressPanel"]
-layout_mode = 0
-offset_left = 105.0
-offset_top = -1.0
-offset_right = 109.0
-offset_bottom = 26.0
-step = 10.0
 
 [node name="ObjectivePanel" type="Panel" parent="Control"]
 layout_mode = 0

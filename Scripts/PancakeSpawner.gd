@@ -15,6 +15,8 @@ var isFinished
 
 #var pancakeScore
 
+var pancakeCountText
+
 signal batterEmpty()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +24,7 @@ func _ready():
 	
 	scoreText = get_node("../../../Control/ScorePanel/ScoreText")
 	objectiveText = get_node("../../../Control/ObjectivePanel/CurrentObjectiveText")
+	pancakeCountText = get_node("../../../Plate/PancakeCountText")
 
 
 func _spawnPancake():
