@@ -16,10 +16,13 @@ func _ready():
 	objectiveText = get_node("../Control/ObjectivePanel/CurrentObjectiveText")
 	
 	objectiveText.text = "1.  Add Ingredients To The Mixing Bowl"
+	hasMixed = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	scoreText.text = str(score)
+	if !hasMixed:
+		scoreText.text = str(score)
+		
 	if itemBowl.size() >= 4 and mixed == false and hasMixed == false:
 		objectiveText.text = "2. Stir the batter with the whisk"
 		emit_signal("readyToMix")
@@ -71,6 +74,5 @@ func _on_whisk_mix_items():
 	mixed = true
 	emit_signal("mixItems")
 	if hasMixed == false:
-		score += 100
 		hasMixed = true
 		objectiveText.text = "3. Move to the right and fry your pancakes on the pan"

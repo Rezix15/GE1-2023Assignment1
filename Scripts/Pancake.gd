@@ -10,7 +10,9 @@ var takeoutColor
 
 var PancakeStatusText
 
-signal pancakeClicked()
+signal pancakeClicked(pancakeScore:int)
+
+var pancakeScore
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,9 +50,22 @@ func _ready():
 func _process(delta):
 	var burningColor = Color(0.63, 0.61, 0)
 	
-	if pancakeBurnTimer.time_left >= 3.0 and pancakeBurnTimer.time_left <= 7.0:
+	if pancakeBurnTimer.time_left >= 11.5 and pancakeBurnTimer.time_left <= 12.0:
+		pancakeScore = 100
+	
+	if pancakeBurnTimer.time_left >= 9.0 and pancakeBurnTimer.time_left < 11.5:
+		pancakeScore = 80
+	
+	if pancakeBurnTimer.time_left >= 7.0 and pancakeBurnTimer.time_left < 9.0:
+		pancakeScore = 60
+		
+	
+	if pancakeBurnTimer.time_left >= 3.0 and pancakeBurnTimer.time_left < 7.0:
 		pancakeMaterial.albedo_color = burningColor
-	pass
+		pancakeScore = 30
+		
+	if pancakeBurnTimer.time_left < 3.0 and pancakeBurnTimer.time_left > 0:
+		pancakeScore = 20
 
 
 func _on_pancake_timer_timeout():
@@ -61,13 +76,14 @@ func _on_pancake_timer_timeout():
 	
 func _on_pancake_burn_timer_timeout():
 	pancakeMaterial.albedo_color = burnColor
+	pancakeScore = 0
 	pass
 
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and timerEnd:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			emit_signal("pancakeClicked")
+			emit_signal("pancakeClicked", pancakeScore)
 			PancakeStatusText.visible = false
 			pancakeBurnTimer.stop()
 	pass # Replace with function body.
