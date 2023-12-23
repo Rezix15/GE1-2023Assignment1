@@ -41,9 +41,9 @@ The other source that was used was to learn how to send signals between differen
 The final source was how to instantiate an object to be able to spawn them. This was mainly used throughout the game to drop the ingredients into the mixing bowl when clicked and also dropping the batter pan.
 
 # References
-1. Source1: https://www.youtube.com/watch?v=jvxeHSotKpg
-2. Source2: https://forum.godotengine.org/t/how-do-i-connect-signals-between-scenes/19778
-3. Source3: https://www.youtube.com/watch?v=rbaxXLtpSVg
+1.   Source1: https://www.youtube.com/watch?v=jvxeHSotKpg
+2.   Source2: https://forum.godotengine.org/t/how-do-i-connect-signals-between-scenes/19778
+3.   Source3: https://www.youtube.com/watch?v=rbaxXLtpSVg
 
 # What I am most proud of in the assignment 
 What I am most proud of in the assignment, is finally making a simple 3D Godot project. Additionally, getting the score and objective system, while simplistic in nature, was quite fun to work with. In addition to this, getting the mouse movement with the whisk, while buggy in nature due to the conflicting collisions nearby was still fine enough for me as it allows users to stir the batter to create the pancake batter. Though, there were some features, that I would have liked added such as music, fruit pancakes and butter (evident from the unused butter and knife model), I am happy with how the game is right now, as my main objective was with this project was just to create a simplistic game using the Godot Engine
